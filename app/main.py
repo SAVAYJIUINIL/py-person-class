@@ -13,14 +13,12 @@ def create_person_list(people: list) -> list:
     [Person(p_dict["name"], p_dict["age"]) for p_dict in people]
 
     for p_dict in people:
-        current_person = Person.people[p_dict["name"]]
+        person = Person.people[p_dict["name"]]
 
-        wife_name = p_dict.get("wife")
-        if wife_name:
-            current_person.wife = Person.people[wife_name]
+        if p_dict.get("wife"):
+            person.wife = Person.people[p_dict["wife"]]
 
-        husband_name = p_dict.get("husband")
-        if husband_name:
-            current_person.husband = Person.people[husband_name]
+        if p_dict.get("husband"):
+            person.husband = Person.people[p_dict["husband"]]
 
     return [Person.people[p_dict["name"]] for p_dict in people]
