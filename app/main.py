@@ -17,13 +17,13 @@ def create_person_list(people: list) -> list:
     for p_dict in people:
         current_person = Person.people[p_dict["name"]]
 
-        if "wife" in p_dict and p_dict["wife"] is not None:
-            partner_name = p_dict["wife"]
-            current_person.wife = Person.people[partner_name]
+        wife_name = p_dict.get("wife")
+        if wife_name:
+            current_person.wife = Person.people[wife_name]
 
-        if "husband" in p_dict and p_dict["husband"] is not None:
-            partner_name = p_dict["husband"]
-            current_person.husband = Person.people[partner_name]
+        husband_name = p_dict.get("husband")
+        if husband_name:
+            current_person.husband = Person.people[husband_name]
 
         result_list.append(current_person)
 
